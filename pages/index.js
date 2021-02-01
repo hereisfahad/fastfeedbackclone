@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { Heading, Text, Button } from '@chakra-ui/react'
+
 import { useAuth } from '@/lib/auth'
 
 const Home = () => {
@@ -6,15 +8,18 @@ const Home = () => {
   return (
     <div >
       <Head>
-        <title>Create Next App</title>
+        <title>FastFeedback Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main >
-        <h1>
-          Welcome to Fast Feedback Clone
-        </h1>
+        <Heading>Welcome to Fast Feedback Clone</Heading>
         {
-          user ? <button onClick={signout}>Signout</button> : <button onClick={signinWithGithub}>Signin</button>
+          user ? (
+            <>
+              <Button onClick={signout}>Signout</Button>
+              <Text>Logged in as {user.name} ({user.email})</Text>
+            </>
+          ) : <Button onClick={signinWithGithub}>Signin</Button>
         }
       </main>
     </div>
