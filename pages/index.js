@@ -1,28 +1,27 @@
-import Head from 'next/head'
-import { Heading, Text, Button } from '@chakra-ui/react'
+import { Heading, Text, Flex } from '@chakra-ui/react'
 
-import { useAuth } from '@/lib/auth'
+import DashboardShell from '@/components/DashboardShell'
 
 const Home = () => {
-  const { user, signinWithGithub, signout } = useAuth()
   return (
-    <div >
-      <Head>
-        <title>FastFeedback Clone</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main >
-        <Heading>Welcome to Fast Feedback Clone</Heading>
-        {
-          user ? (
-            <>
-              <Button onClick={signout}>Signout</Button>
-              <Text>Logged in as {user.name} ({user.email})</Text>
-            </>
-          ) : <Button onClick={signinWithGithub}>Signin</Button>
-        }
-      </main>
-    </div>
+    <DashboardShell>
+      <Flex
+        flexDirection="column"
+        border="1px solid purple"
+        borderRadius="8px"
+        backgroundColor="white"
+        width="600px"
+        minHeight="200px"
+        p={8}
+        justifyContent="flex-start"
+        alignItems="center"
+      >
+        <Heading size="md" mb="1rem">Welcome to Fast Feedback Clone</Heading>
+        <Text>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        </Text>
+      </Flex>
+    </DashboardShell>
   )
 }
 
