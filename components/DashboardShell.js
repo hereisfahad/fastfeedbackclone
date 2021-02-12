@@ -11,7 +11,7 @@ const DashboardShell = ({ children }) => {
         color="purple.500"
         justifyContent="flex-start"
         backgroundColor="gray.50"
-        height="100vh"
+        minHeight="100vh"
         flexDirection="column"
       >
         <Navbar />
