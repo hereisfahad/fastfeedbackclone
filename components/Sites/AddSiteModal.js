@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useForm } from "react-hook-form";
+import { mutate } from 'swr'
 
 import {
   Button,
@@ -37,6 +38,7 @@ const AddSiteModal = ({ buttonText }) => {
         name,
         link
       })
+      mutate('/api/sites')
       toast({
         title: "Site created.",
         description: "Your site is created.",
