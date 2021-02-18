@@ -57,7 +57,7 @@ const AddSiteModal = ({ buttonText }) => {
 
   return (
     <>
-      <Button onClick={onOpen}>{buttonText}</Button>
+      <Button onClick={onOpen} bg="white">{buttonText}</Button>
       <Modal
         isOpen={isOpen}
         onClose={onClose}
@@ -82,7 +82,7 @@ const AddSiteModal = ({ buttonText }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="purple" mr={3} type="submit" id="create-site-button" isLoading={loading} loadingText="adding..">
+            <Button colorScheme="purple" mr={3} type="submit" id="create-site-button" isLoading={loading} loadingText="Adding...">
               Create
             </Button>
             <Button onClick={onClose}>Cancel</Button>

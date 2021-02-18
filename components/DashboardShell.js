@@ -13,6 +13,7 @@ const DashboardShell = ({ children }) => {
         backgroundColor="gray.50"
         minHeight="100vh"
         flexDirection="column"
+        bgGradient="radial(gray.200, purple.50)"
       >
         <Navbar />
         <Flex

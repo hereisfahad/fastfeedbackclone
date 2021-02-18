@@ -6,9 +6,18 @@ import {
   Tr,
   Th,
   Td,
+  Skeleton
 } from "@chakra-ui/react"
 
-export default function SiteTable({ sites }) {
+const SkeletonRow = () => (
+  <Tr>
+    <Td><Skeleton height="20px" width="150px" /></Td>
+    <Td><Skeleton height="20px" width="100px" /></Td>
+    <Td><Skeleton height="20px" width="275px" /></Td>
+  </Tr>
+)
+
+export default function SiteTableSkeleton() {
   return (
     <Box border="1px solid" borderColor="gray.100" borderRadius="5px" boxShadow="lg" bg="white">
       <Table variant="simple" w="710px">
@@ -20,17 +29,9 @@ export default function SiteTable({ sites }) {
           </Tr>
         </Thead>
         <Tbody color="gray.600">
-          {
-            sites.map(({ name, link, createdAt }) => {
-              return (
-                <Tr>
-                  <Td minWidth="150px">{name}</Td>
-                  <Td minWidth="150px">{link}</Td>
-                  <Td minWidth="310px">{createdAt}</Td>
-                </Tr>
-              )
-            })
-          }
+            <SkeletonRow />
+            <SkeletonRow />
+            <SkeletonRow />
         </Tbody>
       </Table>
     </Box>
