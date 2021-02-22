@@ -79,8 +79,8 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
         </Box>
       )}
       {
-        allFeedback.map((feedback) => (
-          <Feedback key={feedback.id} {...feedback} />
+        allFeedback.map((feedback, index) => (
+          <Feedback key={`${feedback.id}_${index}`} {...feedback} />
         ))
       }
     </Box>
