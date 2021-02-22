@@ -47,7 +47,7 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
       author: auth.user.name,
       authorId: auth.user.uid,
       siteId: router.query.siteId,
-      text: feedback,
+      text: feedback.trim(),
       createdAt: new Date().toISOString(),
       provider: auth.user.provider,
       status: 'Pending'
@@ -72,7 +72,7 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
           <FormControl my={8}>
             <FormLabel htmlFor="comment">Comment <Text color="red" as="span">*</Text></FormLabel>
             <Input autoFocus focusBorderColor="purple.400" borderColor="purple.400" value={feedback} onChange={(e) => setFeedback(e.target.value)} id="comment" placeholder="Leave a comment" />
-            <Button colorScheme="purple" mt={4} type="submit" fontWeight="medium" disabled={!feedback} isLoading={loading}>
+            <Button colorScheme="purple" mt={4} type="submit" fontWeight="medium" disabled={!feedback.trim()} isLoading={loading}>
               Add Comment
             </Button>
           </FormControl>
