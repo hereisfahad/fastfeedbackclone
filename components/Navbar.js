@@ -5,6 +5,7 @@ import {
   Text,
   Avatar,
   Button,
+  Skeleton
 } from '@chakra-ui/react'
 import { useAuth } from '@/lib/auth'
 import NextLink from 'next/link'
@@ -12,7 +13,7 @@ import NextLink from 'next/link'
 import Logo from '@/components/Logo'
 
 const DashboardShell = () => {
-  const { user, signinWithGithub, signout } = useAuth()
+  const { user, loading, signinWithGithub, signout } = useAuth()
 
   return (
     <>
@@ -48,13 +49,15 @@ const DashboardShell = () => {
           alignItems="center"
         >
           {
-            user ? (
-              <>
-                <Text>{user.name}</Text>
-                <Avatar size="sm" src={user.photoUrl} />
-                <Button onClick={signout} size="xs" colorScheme="red">Signout</Button>
-              </>
-            ) : <Button onClick={signinWithGithub}>Signin</Button>
+            loading ? <Skeleton>Username</Skeleton> : (
+              user ? (
+                <>
+                  <Text>{user.name}</Text>
+                  <Avatar size="sm" src={user.photoUrl} />
+                  <Button onClick={signout} size="xs" colorScheme="red">Signout</Button>
+                </>
+              ) : <Button onClick={signinWithGithub}>Signin</Button>
+            )
           }
         </Stack>
       </Flex>
