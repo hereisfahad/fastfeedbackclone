@@ -65,7 +65,7 @@ const AddSiteModal = ({ buttonText }) => {
       >
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onSubmit)} mx="2rem">
-          <ModalHeader userSelect="none">Add site</ModalHeader>
+          <ModalHeader userSelect="none">Add Site</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl isInvalid={errors?.name?.message}>

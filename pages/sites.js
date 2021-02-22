@@ -52,11 +52,10 @@ const Sites = () => {
           <AddSiteModal buttonText="Add site" />
         </Flex>
         {
-          data?.sites.length === 0 ? <SiteEmptyState /> : <SiteTable sites={data?.sites} />
+          data?.sites.length === 0 ? <SiteEmptyState /> : <SiteTable sites={data?.sites || []} />
         }
       </Flex>
     </DashboardShell>
   )
 }
-
 export default Sites
