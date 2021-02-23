@@ -38,7 +38,7 @@ const AddSiteModal = ({ buttonText }) => {
         name,
         link
       })
-      mutate('/api/sites')
+      mutate(['/api/sites', auth.user.token])
       toast({
         title: "Site created.",
         description: "Your site is created.",
