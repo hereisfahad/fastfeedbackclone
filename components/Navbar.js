@@ -40,7 +40,9 @@ const DashboardShell = () => {
           <NextLink href="/sites" passHref>
             <Link>Sites</Link>
           </NextLink>
-          <Link>Feedback</Link>
+          <NextLink href="/feedback" passHref>
+            <Link>Feedback</Link>
+          </NextLink>
         </Stack>
         <Stack
           spacing={2}

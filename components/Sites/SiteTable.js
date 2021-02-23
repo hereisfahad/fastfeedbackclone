@@ -31,7 +31,7 @@ export default function SiteTable({ sites }) {
                   <Td minWidth="150px">{link}</Td>
                   <Td minWidth="150px">
                     <NextLink href="/feedback/[siteId]" as={`/feedback/${id}`} passHref>
-                      <Link>View Feedback</Link>
+                      <Link color="purple.400">View Feedback</Link>
                     </NextLink>
                   </Td>
                   <Td minWidth="310px">{createdAt}</Td>
