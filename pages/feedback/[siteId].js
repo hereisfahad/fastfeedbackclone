@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, FormControl, FormLabel, Input, Button, Text } from '@chakra-ui/react';
 
+import DashboardShell from '@/components/DashboardShell'
 import Feedback from '@/components/Feedback';
 import { useAuth } from '@/lib/auth';
 import { createFeedback } from '@/lib/db';
@@ -51,7 +52,8 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
       text: feedback.trim(),
       createdAt: new Date().toISOString(),
       provider: auth.user.provider,
-      status: false
+      isVisible: false,
+      isDeleted: false
     };
 
     setAllFeedback([newFeedback, ...allFeedback]);
@@ -61,30 +63,32 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      width="full"
-      maxWidth="700px"
-      margin="2rem auto"
-    >
-      {auth.user && (
-        <Box as="form" onSubmit={onSubmit} border="1px solid" borderColor="gray.400" rounded="md" px={6}>
-          <FormControl my={8}>
-            <FormLabel htmlFor="comment">Comment <Text color="red" as="span">*</Text></FormLabel>
-            <Input autoFocus focusBorderColor="purple.400" borderColor="purple.400" value={feedback} onChange={(e) => setFeedback(e.target.value)} id="comment" placeholder="Leave a comment" />
-            <Button colorScheme="purple" mt={4} type="submit" fontWeight="medium" disabled={!feedback.trim()} isLoading={loading}>
-              Add Comment
-            </Button>
-          </FormControl>
-        </Box>
-      )}
-      {
-        allFeedback.map((feedback, index) => (
-          <Feedback key={`${feedback.id}_${index}`} {...feedback} />
-        ))
-      }
-    </Box>
+    <DashboardShell>
+      <Box
+        display="flex"
+        flexDirection="column"
+        width="full"
+        maxWidth="700px"
+        margin="2rem auto"
+      >
+        {auth.user && (
+          <Box as="form" bg="white" onSubmit={onSubmit} border="1px solid" borderColor="gray.400" rounded="md" px={6}>
+            <FormControl my={8}>
+              <FormLabel htmlFor="comment">Comment <Text color="red" as="span">*</Text></FormLabel>
+              <Input autoFocus focusBorderColor="purple.400" borderColor="purple.400" value={feedback} onChange={(e) => setFeedback(e.target.value)} id="comment" placeholder="Leave a comment" />
+              <Button colorScheme="purple" mt={4} type="submit" fontWeight="medium" disabled={!feedback.trim()} isLoading={loading}>
+                Add Comment
+              </Button>
+            </FormControl>
+          </Box>
+        )}
+        {
+          allFeedback.map((feedback, index) => (
+            <Feedback key={`${feedback.id}_${index}`} {...feedback} />
+          ))
+        }
+      </Box>
+    </DashboardShell>
   );
 };
 

@@ -27,7 +27,7 @@ export default function TableSkeleton() {
           <Tr>
             <Th minWidth="150px">Name</Th>
             <Th minWidth="150px">Feedback</Th>
-            <Th minWidth="150px">Route</Th>
+            <Th minWidth="150px">Site Name</Th>
             <Th minWidth="100px">Visible</Th>
             <Th minWidth="300px">Added at</Th>
             <Th minWidth="100px">{''}</Th>
