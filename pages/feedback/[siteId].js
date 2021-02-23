@@ -51,7 +51,7 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
       text: feedback.trim(),
       createdAt: new Date().toISOString(),
       provider: auth.user.provider,
-      status: 'Pending'
+      status: false
     };
 
     setAllFeedback([newFeedback, ...allFeedback]);
