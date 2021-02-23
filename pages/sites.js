@@ -7,6 +7,7 @@ import {
   Stack,
   Link,
   Text,
+  useToast
 } from '@chakra-ui/react'
 import useSWR from 'swr'
 
@@ -19,10 +20,20 @@ import { fetcher } from '@/utils/fetcher'
 import { useAuth } from '@/lib/auth'
 
 const Sites = () => {
+  const toast = useToast()
   const { user, loading, signinWithGithub } = useAuth()
-  const { data } = useSWR('/api/sites', fetcher)
+  const { data } = useSWR(user? ['/api/sites', user.token]: null, fetcher)
 
   if (loading && !user) return <Placeholder />
+
+  if(data?.error){
+    toast({
+      status: 'error',
+      description: data.error.message,
+      isClosable: true,
+      duration: 4000
+    })
+  }
 
   if (!loading && !user) {
     return (
@@ -52,7 +63,7 @@ const Sites = () => {
           <AddSiteModal buttonText="Add site" />
         </Flex>
         {
-          data?.sites.length === 0 ? <SiteEmptyState /> : <SiteTable sites={data?.sites || []} />
+          data?.sites?.length === 0 ? <SiteEmptyState /> : <SiteTable sites={data?.sites || []} />
         }
       </Flex>
     </DashboardShell>
