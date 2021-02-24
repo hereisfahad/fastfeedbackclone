@@ -13,7 +13,6 @@ const theme = extendTheme({
   styles: {
     global: {
       html: {
-        minWidth: '360px',
         minHeight: '100vh',
         scrollBehavior: 'smooth'
       },

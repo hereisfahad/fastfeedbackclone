@@ -47,7 +47,7 @@ const Feedback = () => {
 
   return (
     <DashboardShell>
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" paddingBottom="4rem">
         <Flex justifyContent="space-between" alignItems="center">
           <Stack>
             <Breadcrumb>

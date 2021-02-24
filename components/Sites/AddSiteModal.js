@@ -36,7 +36,12 @@ const AddSiteModal = ({ buttonText }) => {
         authorId: auth.user.uid,
         createdAt: new Date().toISOString(),
         name,
-        link
+        link,
+        settings: {
+          icons: true,
+          timestamp: true,
+          ratings: false
+        }
       })
       mutate(['/api/sites', auth.user.token])
       toast({
@@ -83,7 +88,7 @@ const AddSiteModal = ({ buttonText }) => {
 
           <ModalFooter>
             <Button colorScheme="purple" mr={3} type="submit" id="create-site-button" isLoading={loading} loadingText="Adding...">
-              Create
+              Add
             </Button>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>

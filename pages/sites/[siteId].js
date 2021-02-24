@@ -6,15 +6,16 @@ import DashboardShell from '@/components/DashboardShell'
 import Feedback from '@/components/Feedback';
 import { useAuth } from '@/lib/auth';
 import { createFeedback } from '@/lib/db';
-import { getAllFeedback, getAllSites } from '@/lib/db-admin';
+import { getAllFeedback, getAllSites, getSite } from '@/lib/db-admin';
 
 export async function getStaticProps(context) {
   const siteId = context.params.siteId;
   const { feedback } = await getAllFeedback(siteId);
-
+  const { site } = await getSite(siteId)
   return {
     props: {
-      initialFeedback: feedback
+      initialFeedback: feedback,
+      site
     },
     revalidate: 60,
   };
@@ -34,7 +35,7 @@ export async function getStaticPaths() {
   };
 }
 
-const FeedbackPage = ({ initialFeedback = [] }) => {
+const FeedbackPage = ({ initialFeedback = [], site }) => {
   const auth = useAuth();
   const router = useRouter();
   const [feedback, setFeedback] = useState('')
@@ -84,7 +85,7 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
         )}
         {
           allFeedback.map((feedback, index) => (
-            <Feedback key={`${feedback.id}_${index}`} {...feedback} />
+            <Feedback key={`${feedback.id}_${index}`} {...feedback} settings={site?.settings} />
           ))
         }
       </Box>

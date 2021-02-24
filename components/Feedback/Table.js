@@ -51,7 +51,7 @@ export default function FeedbackTable({ allFeedback }) {
                   <Td minWidth="100px">
                     <Switch
                       id="email-alerts"
-                      colorScheme="teal"
+                      colorScheme="purple"
                       defaultChecked={isVisible}
                       isDisabled={isDeleted}
                       onChange={() => updateFeedbackStatus(id, isVisible)}
