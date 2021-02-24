@@ -15,7 +15,7 @@ import { deleteFeedback } from '@/lib/db';
 import { useAuth } from '@/lib/auth';
 import { DeleteIcon } from '@chakra-ui/icons';
 
-const DeleteButton = ({ feedbackId }) => {
+const DeleteButton = ({ feedbackId, isDisabled }) => {
   const [isOpen, setIsOpen] = useState();
   const [loading, setLoading] = useState(false);
   const cancelRef = useRef();
@@ -38,6 +38,7 @@ const DeleteButton = ({ feedbackId }) => {
         icon={<DeleteIcon />}
         variant="ghost"
         color="red.500"
+        isDisabled={isDisabled}
         onClick={() => setIsOpen(true)}
       />
       <AlertDialog

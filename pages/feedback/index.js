@@ -39,7 +39,7 @@ const Feedback = () => {
       <DashboardShell>
         <>
           <Link onClick={signinWithGithub} fontSize="lg">Login</Link>
-          <Text color="gray.600" fontSize="lg">To see your feedback</Text>
+          <Text color="gray.600" fontSize="lg">To see feedback</Text>
         </>
       </DashboardShell>
     )
@@ -56,7 +56,7 @@ const Feedback = () => {
               </BreadcrumbItem>
             </Breadcrumb>
             <Heading size="md" mb="1rem">
-              My Feedback
+              All Feedback
             </Heading>
           </Stack>
         </Flex>

@@ -11,12 +11,13 @@ import {
 
 import { useAuth } from "@/lib/auth"
 import DeleteButton from "./DeleteButton"
+import { formatDate } from "@/utils/helperFunctions"
 
 export default function FeedbackTable({ allFeedback }) {
   const { user } = useAuth()
 
-  const updateFeedbackStatus = async (id, currentStatus) => {
-    const feedBackData = { status: !currentStatus }
+  const updateFeedbackStatus = async (id, isVisible) => {
+    const feedBackData = { isVisible: !isVisible }
     const res = await fetch(`api/feedback/${id}`, {
       method: 'POST',
       headers: new Headers({ 'content-type': 'application/json', token: user.token }),
@@ -33,7 +34,7 @@ export default function FeedbackTable({ allFeedback }) {
           <Tr>
             <Th minWidth="150px">Name</Th>
             <Th minWidth="150px">Feedback</Th>
-            <Th minWidth="150px">Route</Th>
+            <Th minWidth="150px">Site Name</Th>
             <Th minWidth="100px">Visible</Th>
             <Th minWidth="300px">Added at</Th>
             <Th minWidth="100px">{''}</Th>
@@ -41,22 +42,23 @@ export default function FeedbackTable({ allFeedback }) {
         </Thead>
         <Tbody color="gray.600">
           {
-            allFeedback.map(({ id, author, text, status, createdAt }) => {
+            allFeedback.map(({ id, author, text, siteName, isVisible, isDeleted, createdAt }) => {
               return (
                 <Tr key={id} >
                   <Td minWidth="150px">{author}</Td>
                   <Td minWidth="150px">{text}</Td>
-                  <Td minWidth="150px">{'/'}</Td>
+                  <Td minWidth="150px">{siteName}</Td>
                   <Td minWidth="100px">
                     <Switch
                       id="email-alerts"
                       colorScheme="teal"
-                      defaultChecked={status}
-                      onChange={() => updateFeedbackStatus(id, status)}
+                      defaultChecked={isVisible}
+                      isDisabled={isDeleted}
+                      onChange={() => updateFeedbackStatus(id, isVisible)}
                     />
                   </Td>
-                  <Td minWidth="300px">{createdAt}</Td>
-                  <Th minWidth="100px"><DeleteButton feedbackId={id} /></Th>
+                  <Td minWidth="300px">{formatDate(createdAt)}</Td>
+                  <Th minWidth="100px"><DeleteButton feedbackId={id} isDisabled={isDeleted} /></Th>
                 </Tr>
               )
             })
