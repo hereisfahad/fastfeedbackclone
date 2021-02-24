@@ -15,6 +15,8 @@ const SkeletonRow = () => (
     <Td><Skeleton height="20px" width="100px" /></Td>
     <Td><Skeleton height="20px" width="100px" /></Td>
     <Td><Skeleton height="20px" width="275px" /></Td>
+    <Th><Skeleton height="20px" width="20px" /></Th>
+    <Th><Skeleton height="20px" width="20px" /></Th>
   </Tr>
 )
 
@@ -28,6 +30,8 @@ export default function SiteTableSkeleton() {
             <Th minWidth="150px">Link</Th>
             <Th minWidth="150px">Feedback Link</Th>
             <Th minWidth="300px">Created at</Th>
+            <Th>{''}</Th>
+            <Th>{''}</Th>
           </Tr>
         </Thead>
         <Tbody color="gray.600">
