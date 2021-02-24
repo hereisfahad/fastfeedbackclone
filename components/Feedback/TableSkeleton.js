@@ -11,11 +11,12 @@ import {
 
 const SkeletonRow = () => (
   <Tr>
-    <Td><Skeleton height="20px" width="150px" /></Td>
+    <Td><Skeleton height="20px" width="100px" /></Td>
     <Td><Skeleton height="20px" width="100px" /></Td>
     <Td><Skeleton height="20px" width="100px" /></Td>
     <Td><Skeleton height="20px" width="275px" /></Td>
     <Td><Skeleton height="20px" width="100px" /></Td>
+    <Td><Skeleton height="20px" width="50px" /></Td>
   </Tr>
 )
 
@@ -25,12 +26,12 @@ export default function TableSkeleton() {
       <Table variant="simple" maxW="710px">
         <Thead bg="gray.100">
           <Tr>
-            <Th minWidth="150px">Name</Th>
-            <Th minWidth="150px">Feedback</Th>
-            <Th minWidth="150px">Site Name</Th>
+            <Th minWidth="100px">Name</Th>
+            <Th minWidth="100px">Feedback</Th>
+            <Th minWidth="100px">Site Name</Th>
             <Th minWidth="100px">Visible</Th>
-            <Th minWidth="300px">Added at</Th>
-            <Th minWidth="100px">{''}</Th>
+            <Th minWidth="200px">Added at</Th>
+            <Th minWidth="50px">{''}</Th>
           </Tr>
         </Thead>
         <Tbody color="gray.600">

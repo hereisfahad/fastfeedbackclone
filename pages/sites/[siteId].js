@@ -72,10 +72,10 @@ const FeedbackPage = ({ initialFeedback = [] }) => {
         margin="2rem auto"
       >
         {auth.user && (
-          <Box as="form" bg="white" onSubmit={onSubmit} border="1px solid" borderColor="gray.400" rounded="md" px={6}>
-            <FormControl my={8}>
+          <Box as="form" bg="white" onSubmit={onSubmit} border="1px solid" borderColor="gray.400" rounded="md" p={4}>
+            <FormControl>
               <FormLabel htmlFor="comment">Comment <Text color="red" as="span">*</Text></FormLabel>
-              <Input autoFocus focusBorderColor="purple.400" borderColor="purple.400" value={feedback} onChange={(e) => setFeedback(e.target.value)} id="comment" placeholder="Leave a comment" />
+              <Input autoFocus focusBorderColor="purple.400" borderColor="purple.400" color="gray.900" value={feedback} onChange={(e) => setFeedback(e.target.value)} id="comment" placeholder="Leave a comment" />
               <Button colorScheme="purple" mt={4} type="submit" fontWeight="medium" disabled={!feedback.trim()} isLoading={loading}>
                 Add Comment
               </Button>

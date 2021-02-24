@@ -14,6 +14,7 @@ const theme = extendTheme({
     global: {
       html: {
         minWidth: '360px',
+        minHeight: '100vh',
         scrollBehavior: 'smooth'
       },
       '#__next': {
@@ -23,7 +24,7 @@ const theme = extendTheme({
       },
       // styles for the `body`
       body: {
-        bg: "gray.200",
+        bgGradient: "radial(gray.200, purple.50)",
         color: "black",
       },
     },

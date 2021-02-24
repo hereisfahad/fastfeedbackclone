@@ -1,3 +1,4 @@
+import { formatDate } from "@/utils/helperFunctions";
 import {
   Box,
   Table,
@@ -30,11 +31,11 @@ export default function SiteTable({ sites }) {
                   <Td minWidth="150px">{name}</Td>
                   <Td minWidth="150px">{link}</Td>
                   <Td minWidth="150px">
-                    <NextLink href="/feedback/[siteId]" as={`/feedback/${id}`} passHref>
+                    <NextLink href="/sites/[siteId]" as={`/sites/${id}`} passHref>
                       <Link color="purple.400">View Feedback</Link>
                     </NextLink>
                   </Td>
-                  <Td minWidth="310px">{createdAt}</Td>
+                  <Td minWidth="310px">{formatDate(createdAt)}</Td>
                 </Tr>
               )
             })

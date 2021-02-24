@@ -1,4 +1,5 @@
 
+import { formatDate } from '@/utils/helperFunctions';
 import { Box, Heading, Text } from '@chakra-ui/react';
 
 const Feedback = ({ author, text, createdAt }) => (
@@ -7,7 +8,7 @@ const Feedback = ({ author, text, createdAt }) => (
       {author}
     </Heading>
     <Text color="gray.500" mb={4} fontSize="xs">
-      {createdAt}
+      {formatDate(createdAt)}
     </Text>
     <Text color="gray.800">{text}</Text>
   </Box>

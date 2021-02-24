@@ -11,6 +11,7 @@ import {
 
 import { useAuth } from "@/lib/auth"
 import DeleteButton from "./DeleteButton"
+import { formatDate } from "@/utils/helperFunctions"
 
 export default function FeedbackTable({ allFeedback }) {
   const { user } = useAuth()
@@ -41,7 +42,7 @@ export default function FeedbackTable({ allFeedback }) {
         </Thead>
         <Tbody color="gray.600">
           {
-            allFeedback.map(({ id, author, text, siteName, isVisible, createdAt }) => {
+            allFeedback.map(({ id, author, text, siteName, isVisible, isDeleted, createdAt }) => {
               return (
                 <Tr key={id} >
                   <Td minWidth="150px">{author}</Td>
@@ -52,11 +53,12 @@ export default function FeedbackTable({ allFeedback }) {
                       id="email-alerts"
                       colorScheme="teal"
                       defaultChecked={isVisible}
+                      isDisabled={isDeleted}
                       onChange={() => updateFeedbackStatus(id, isVisible)}
                     />
                   </Td>
-                  <Td minWidth="300px">{createdAt}</Td>
-                  <Th minWidth="100px"><DeleteButton feedbackId={id} /></Th>
+                  <Td minWidth="300px">{formatDate(createdAt)}</Td>
+                  <Th minWidth="100px"><DeleteButton feedbackId={id} isDisabled={isDeleted} /></Th>
                 </Tr>
               )
             })
